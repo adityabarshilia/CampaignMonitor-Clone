@@ -27,7 +27,7 @@ function Footer() {
 
   return (
     <>
-      <Box h="700px" padding="60px 95px" bg="#111324" color="white">
+      <Box h="700px" padding="60px 85px" bg="#111324" color="white">
         <Flex justifyContent="space-between">
           <Logo />
           <TableContainer>
