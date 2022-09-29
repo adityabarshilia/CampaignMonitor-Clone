@@ -8,11 +8,10 @@ import {
   Menu,
   MenuButton,
   MenuList,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import Logo from "./Logo";
-// import { Link as ReactRouterLink } from 'react-router-dom';
+import { Link as RouterLink } from "react-router-dom";
 
 function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -27,10 +26,10 @@ function Navbar() {
           alignItems="center"
           justifyContent="space-around"
         >
-          <Logo />
+          <Link as={RouterLink} to='/home' _hover={{ textDecoration: 'none' }}><Logo /></Link>
 
           <Flex alignItems="center" gap="25px" h='100%'>
-            <Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>
               <Menu isOpen={isOpen}>
                 <MenuButton
                   mx={1}
@@ -42,7 +41,7 @@ function Navbar() {
                   onMouseLeave={onClose}
                   
                 >
-                  Features {isOpen ? <ChevronUpIcon w={5} h={5} /> : <ChevronDownIcon w={5} h={5} />}
+                  Features {isOpen ? <ChevronUpIcon color="#6AD6E0" w={5} h={5} /> : <ChevronDownIcon w={5} h={5} />}
                 </MenuButton>
                 <MenuList
                   marginTop='-7px'
@@ -53,33 +52,33 @@ function Navbar() {
                   border='0'
                   boxShadow='md'
                 >
-                  <MenuItem _hover={{ bg: "#6AD6E0", borderTopRadius:'5px' }}>Menu Item 1</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 2</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0" }}>Menu Item 3</MenuItem>
-                  <MenuItem _hover={{ bg: "#6AD6E0", borderBottomRadius:'5px' }}>Menu Item 3</MenuItem>
+                  <MenuItem p='12px'  _hover={{ bg: "#6AD6E0", borderTopRadius:'5px' }}>Features Overview</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Email Template Builder</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Segmentation</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Personalization</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Marketing Automation</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Transactional Email</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Analytics</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Integrations</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Signup Forms</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>SMS</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0" }}>Expert Services</MenuItem>
+                  <MenuItem p='12px' _hover={{ bg: "#6AD6E0", borderBottomRadius:'5px' }}>What's New</MenuItem>
                 </MenuList>
               </Menu>
             </Link>
-            <Link>Pricing</Link>
-            <Link>Resources</Link>
-            <Link>Customers</Link>
-            <Link>Gallery</Link>
-            <Link>Agencies</Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/pricing'>Pricing</Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>Resources</Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>Customers</Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>Gallery</Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>Agencies</Link>
           </Flex>
 
           <Flex alignItems="center" gap="20px">
-            <Link>Contact us</Link>
-            <Link>Log in</Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/contact'>Contact us</Link>
+            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/login'>Log in</Link>
             <Button colorScheme="teal" size="md">
-              <Link>Try it free</Link>
+              <Link _hover={{ textDecoration: 'none' }} as={RouterLink} to='/signup'>Try it free</Link>
             </Button>
           </Flex>
         </Flex>
