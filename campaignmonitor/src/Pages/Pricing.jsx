@@ -1,13 +1,145 @@
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
+import {
+  Flex,
+  Box,
+  Text,
+  Button,
+  VStack,
+  ButtonGroup,
+  Heading,
+  Input,
+  Slider,
+  SliderTrack,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderMark,
+  Stack,
+} from "@chakra-ui/react";
+import NormalButton from "../Components/NormaButton";
 
-function Pricing(){
-    return(
-        <>
-        <Navbar />
-        <Footer />
-        </>
-    )
+import { useState } from "react";
+
+// import { useRef } from "react";
+
+function Pricing() {   
+
+    // const ChangingSlider = ({handleChangeSlider, value}) => {
+    //     return (
+    //         <Slider onChange={(e) => handleChangeSlider(e)} value={value} w='60%' defaultValue={0} min={0} max={50000}>
+    //         <SliderTrack bg="lightgrey">
+    //           <Box position="relative" right={10} />
+    //           <SliderFilledTrack bg="#7856FF" />
+    //         </SliderTrack>
+    //         <SliderThumb boxSize={6} />
+    //       </Slider>
+    //     )
+    //   }
+    
+    const ChangingInput = ({handleChangeInput, value}) => {
+        return (
+            <Input
+              size="lg"
+              w="120px"
+              h="45px"
+              bg="#7856FF"
+              borderRadius="0"
+              type="number"
+              textAlign="center"
+              color="white"
+              fontSize="18px"
+              fontWeight="bolder"
+              value={value}
+              onChange={handleChangeInput}
+            ></Input>
+        )
+    }  
+
+  const [value, setValue] = useState(0);
+
+//   const inputRef = useRef(null);
+
+  const handleChangeSlider = (e) =>{
+    setValue(e);
+  } 
+  const handleChangeInput = (e) => {
+    // inputRef.current.focus();
+    setValue(e.target.value);
+  } 
+
+  return (
+    <>
+      <Navbar />
+      <VStack pt="150px" spacing="20px">
+        <Heading size="3xl" fontWeight="500">
+          Simple, straightforward pricing.
+        </Heading>
+        <Text color="#8A8B9A" fontSize="18px" w="68%">
+          Choose the plan that's right for your brand. Whether you're just
+          getting started with email marketing or you're personalizing every
+          campaign, there's a plan for you.
+        </Text>
+        <ButtonGroup gap="4">
+          <NormalButton text="Get started for free" />
+          <Button
+            w="257.39px"
+            h="60.93px"
+            bg="#54D0DC"
+            _hover={{ bg: "#6bd7e1" }}
+            size="lg"
+            color="black"
+          >
+            High volume pricing
+          </Button>
+        </ButtonGroup>
+      </VStack>
+
+      <Text fontSize="20px" fontWeight="bolder" m="100px 0">
+        With your list of {" "}
+        {/* {ChangingInput(handleChangeInput, value)}
+         <Input
+          size="lg"
+          w="120px"
+          h="45px"
+          bg="#7856FF"
+          borderRadius="0"
+          type="number"
+          textAlign="center"
+          color="white"
+          fontSize="18px"
+          fontWeight="bolder"
+          value={value}
+          onChange={handleChangeInput}
+        ></Input> {" "} */}
+        <ChangingInput value={value} handleChangeInput={handleChangeInput} /> {" "}
+        contacts, we've got the right plan for you.
+      </Text>
+
+     <Flex justifyContent='center' alignItems='center' gap='20px'>
+     {/* <ChangingSlider handleChangeSlider={handleChangeSlider} value={value} /> */}
+     <Slider onChange={handleChangeSlider} value={value} w='60%' defaultValue={0} min={0} max={50000}>
+        <SliderTrack bg="lightgrey">
+          <Box position="relative" right={10} />
+          <SliderFilledTrack bg="#7856FF" />
+        </SliderTrack>
+        <SliderThumb boxSize={6} />
+      </Slider>
+      <Text fontSize='13.5px' fontWeight='bold' color='#7856FF'>MORE THAN 50000</Text>
+     </Flex>
+
+     <Flex bg='lightgray' h='300px' m='100px 0 50px 0' justifyContent='center' alignItems='center'>
+        <VStack>
+            <Text>Basic</Text>
+            <Text>Get started quickly with our core features.</Text>
+            <Text>$299/month</Text>
+            <NormalButton text='Sign up' />
+        </VStack>
+     </Flex>
+      
+
+      {/* <Footer /> */}
+    </>
+  );
 }
 
 export default Pricing;
