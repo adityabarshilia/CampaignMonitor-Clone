@@ -8,10 +8,61 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Input,
+  Text,
+  Divider,
+  Stack
 } from "@chakra-ui/react";
 import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import Logo from "./Logo";
 import { Link as RouterLink } from "react-router-dom";
+import { useRef } from "react";
+
+function DrawerExample() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef();
+
+  return (
+    <>
+      <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} ref={btnRef} colorScheme='teal' onClick={onOpen}>
+        Contact us
+      </Link>
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        size='full'
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader><Logo /></DrawerHeader>
+
+          <Flex w='100%' h='100vh' justifyContent='center' alignItems='center'>
+          <Box>
+            <Text>ASK US YOUR QUESTIONS</Text>
+            <Divider />
+            <Stack textAlign='left'>
+            <Link>Get started for free</Link>
+            <Link>Contact the sales team</Link>
+            <Link>Contact the support team</Link>
+            </Stack>
+          </Box>        
+          </Flex>
+         
+        </DrawerContent>
+      </Drawer>
+    </>
+  )
+}
 
 function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -75,7 +126,8 @@ function Navbar() {
           </Flex>
 
           <Flex alignItems="center" gap="20px">
-            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/contact'>Contact us</Link>
+            {/* <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/contact'>Contact us</Link> */}
+            <DrawerExample />
             <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/login'>Log in</Link>
             <Button colorScheme="teal" size="md">
               <Link _hover={{ textDecoration: 'none' }} as={RouterLink} to='/signup'>Try it free</Link>

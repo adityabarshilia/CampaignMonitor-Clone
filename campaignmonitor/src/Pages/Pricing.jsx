@@ -613,7 +613,7 @@ function Pricing() {
         Frequently Asked Questions
       </Text>
 
-      <Grid w="80%" m="auto" mb='100px' templateColumns="repeat(3, 1fr)" rowGap='40px'>
+      <Grid w="80%" m="auto" mb='100px' templateColumns="repeat(3, 1fr)" rowGap='40px' columnGap='30px'>
         <GridItem w="100%" h="auto">
           <Stack textAlign='left'>
             <Text>What if I go over my plan’s limits?</Text>
