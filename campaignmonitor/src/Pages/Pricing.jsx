@@ -15,6 +15,15 @@ import {
   SliderThumb,
   SliderMark,
   Stack,
+  Table,
+  Thead,
+  Tbody,
+  Tfoot,
+  Tr,
+  Th,
+  Td,
+  TableCaption,
+  TableContainer,
 } from "@chakra-ui/react";
 import NormalButton from "../Components/NormaButton";
 
@@ -22,50 +31,49 @@ import { useState } from "react";
 
 // import { useRef } from "react";
 
-function Pricing() {   
+function Pricing() {
+  // const ChangingSlider = ({handleChangeSlider, value}) => {
+  //     return (
+  //         <Slider onChange={(e) => handleChangeSlider(e)} value={value} w='60%' defaultValue={0} min={0} max={50000}>
+  //         <SliderTrack bg="lightgrey">
+  //           <Box position="relative" right={10} />
+  //           <SliderFilledTrack bg="#7856FF" />
+  //         </SliderTrack>
+  //         <SliderThumb boxSize={6} />
+  //       </Slider>
+  //     )
+  //   }
 
-    // const ChangingSlider = ({handleChangeSlider, value}) => {
-    //     return (
-    //         <Slider onChange={(e) => handleChangeSlider(e)} value={value} w='60%' defaultValue={0} min={0} max={50000}>
-    //         <SliderTrack bg="lightgrey">
-    //           <Box position="relative" right={10} />
-    //           <SliderFilledTrack bg="#7856FF" />
-    //         </SliderTrack>
-    //         <SliderThumb boxSize={6} />
-    //       </Slider>
-    //     )
-    //   }
-    
-    const ChangingInput = ({handleChangeInput, value}) => {
-        return (
-            <Input
-              size="lg"
-              w="120px"
-              h="45px"
-              bg="#7856FF"
-              borderRadius="0"
-              type="number"
-              textAlign="center"
-              color="white"
-              fontSize="18px"
-              fontWeight="bolder"
-              value={value}
-              onChange={handleChangeInput}
-            ></Input>
-        )
-    }  
+  const ChangingInput = ({ handleChangeInput, value }) => {
+    return (
+      <Input
+        size="lg"
+        w="120px"
+        h="45px"
+        bg="#7856FF"
+        borderRadius="0"
+        type="number"
+        textAlign="center"
+        color="white"
+        fontSize="18px"
+        fontWeight="bolder"
+        value={value}
+        onChange={handleChangeInput}
+      ></Input>
+    );
+  };
 
   const [value, setValue] = useState(0);
 
-//   const inputRef = useRef(null);
+  //   const inputRef = useRef(null);
 
-  const handleChangeSlider = (e) =>{
+  const handleChangeSlider = (e) => {
     setValue(e);
-  } 
+  };
   const handleChangeInput = (e) => {
     // inputRef.current.focus();
     setValue(e.target.value);
-  } 
+  };
 
   return (
     <>
@@ -95,7 +103,7 @@ function Pricing() {
       </VStack>
 
       <Text fontSize="20px" fontWeight="bolder" m="100px 0">
-        With your list of {" "}
+        With your list of{" "}
         {/* {ChangingInput(handleChangeInput, value)}
          <Input
           size="lg"
@@ -111,31 +119,144 @@ function Pricing() {
           value={value}
           onChange={handleChangeInput}
         ></Input> {" "} */}
-        <ChangingInput value={value} handleChangeInput={handleChangeInput} /> {" "}
+        <ChangingInput value={value} handleChangeInput={handleChangeInput} />{" "}
         contacts, we've got the right plan for you.
       </Text>
 
-     <Flex justifyContent='center' alignItems='center' gap='20px'>
-     {/* <ChangingSlider handleChangeSlider={handleChangeSlider} value={value} /> */}
-     <Slider onChange={handleChangeSlider} value={value} w='60%' defaultValue={0} min={0} max={50000}>
-        <SliderTrack bg="lightgrey">
-          <Box position="relative" right={10} />
-          <SliderFilledTrack bg="#7856FF" />
-        </SliderTrack>
-        <SliderThumb boxSize={6} />
-      </Slider>
-      <Text fontSize='13.5px' fontWeight='bold' color='#7856FF'>MORE THAN 50000</Text>
-     </Flex>
+      <Flex justifyContent="center" alignItems="center" gap="20px">
+        {/* <ChangingSlider handleChangeSlider={handleChangeSlider} value={value} /> */}
+        <Slider
+          onChange={handleChangeSlider}
+          value={value}
+          w="60%"
+          defaultValue={0}
+          min={0}
+          max={50000}
+        >
+          <SliderTrack bg="lightgrey">
+            <Box position="relative" right={10} />
+            <SliderFilledTrack bg="#7856FF" />
+          </SliderTrack>
+          <SliderThumb boxSize={6} />
+        </Slider>
+        <Text fontSize="13.5px" fontWeight="bold" color="#7856FF">
+          MORE THAN 50000
+        </Text>
+      </Flex>
 
-     <Flex bg='lightgray' h='300px' m='100px 0 50px 0' justifyContent='center' alignItems='center'>
-        <VStack>
-            <Text>Basic</Text>
-            <Text>Get started quickly with our core features.</Text>
-            <Text>$299/month</Text>
-            <NormalButton text='Sign up' />
+      <Flex
+        bg="#F2F2F3"
+        m="100px 0 50px 0"
+        justifyContent="center"
+        alignItems="center"
+        p="30px 0"
+        gap="20px"
+      >
+        <VStack boxShadow="lg" bg="white" p="20px 15px">
+          <Text fontSize="4xl" color="#886AFF">
+            Basic
+          </Text>
+          <Text fontSize="13px" color="#8A9FC7" w="80%">
+            Get started quickly with our core features.
+          </Text>
+          <Text>
+            <Text
+              fontWeight="bold"
+              display="inline-block"
+              paddingTop="17px"
+              fontSize="24px"
+              verticalAlign="top"
+              as="span"
+            >
+              $
+            </Text>
+            <Text fontWeight="bolder" as="span" fontSize="6xl">
+              299
+            </Text>
+            /month
+          </Text>
+          <NormalButton text="Sign up" />
         </VStack>
-     </Flex>
-      
+        <VStack boxShadow="lg" bg="white" p="20px 15px">
+          <Text fontSize="4xl" color="#886AFF">
+            Unlimited
+          </Text>
+          <Text fontSize="13px" color="#8A9FC7" w="80%">
+            Unlimited emails for the frequent sender.
+          </Text>
+          <Text>
+            <Text
+              fontWeight="bold"
+              display="inline-block"
+              paddingTop="17px"
+              fontSize="24px"
+              verticalAlign="top"
+              as="span"
+            >
+              $
+            </Text>
+            <Text fontWeight="bolder" as="span" fontSize="6xl">
+              299
+            </Text>
+            /month
+          </Text>
+          <NormalButton text="Sign up" />
+        </VStack>
+        <VStack boxShadow="lg" bg="white" p="20px 15px">
+          <Text fontSize="4xl" color="#886AFF">
+            Premier
+          </Text>
+          <Text fontSize="13px" color="#8A9FC7" w="80%">
+            Advanced segmentation plus premier support.
+          </Text>
+          <Text>
+            <Text
+              fontWeight="bold"
+              display="inline-block"
+              paddingTop="17px"
+              fontSize="24px"
+              verticalAlign="top"
+              as="span"
+            >
+              $
+            </Text>
+            <Text fontWeight="bolder" as="span" fontSize="6xl">
+              299
+            </Text>
+            /month
+          </Text>
+          <NormalButton text="Sign up" />
+        </VStack>
+      </Flex>
+
+      <TableContainer m='80px 0'>
+        <Table w='75%' ml='50px' variant="striped" colorScheme="gray">
+          <Tbody>
+          
+            <Tr>
+              <Th textTransform='capitalize' fontSize='28px' p='60px 0 30px 0' fontWeight='bold'>Channels</Th>
+            </Tr>
+       
+            <Tr>
+              <Td>Email</Td>
+              <Td>2,500</Td>
+              <Td textAlign='center'>Unlimited</Td>
+              <Td textAlign='center'>Unlimited</Td>
+            </Tr>
+
+            <Tr>
+              <Th textTransform='capitalize' fontSize='28px' p='60px 0 30px 0' fontWeight='bold'>Channels</Th>
+            </Tr>
+       
+            <Tr>
+              <Td>Email</Td>
+              <Td>2,500</Td>
+              <Td textAlign='center'>Unlimited</Td>
+              <Td textAlign='center'>Unlimited</Td>
+            </Tr>
+        </Tbody>
+        </Table>
+      </TableContainer>
 
       {/* <Footer /> */}
     </>
