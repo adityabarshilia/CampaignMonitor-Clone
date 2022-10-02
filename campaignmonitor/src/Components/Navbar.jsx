@@ -8,10 +8,61 @@ import {
   Menu,
   MenuButton,
   MenuList,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  Input,
+  Text,
+  Divider,
+  Stack
 } from "@chakra-ui/react";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, ChevronUpIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import Logo from "./Logo";
 import { Link as RouterLink } from "react-router-dom";
+import { useRef } from "react";
+
+function DrawerExample() {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = useRef();
+
+  return (
+    <>
+      <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} ref={btnRef} colorScheme='teal' onClick={onOpen}>
+        Contact us
+      </Link>
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        size='full'
+      >
+        <DrawerOverlay />
+        <DrawerContent bg='black' color='white' opacity='.8' >
+          <DrawerCloseButton />
+          <DrawerHeader m='12px 0 0 50px' ><Logo color='white' /></DrawerHeader>
+
+          <Flex w='100%' h='100vh' justifyContent='center' mt='200px'>
+          <Box>
+            <Text fontSize='12px' textAlign='center' p='8px'>ASK US YOUR QUESTIONS</Text>
+            <Divider />
+            <Stack textAlign='left' spacing='10px' mt='10px'>
+            <Link p='8px' fontSize='20px'>Get started for free <ChevronRightIcon /></Link>
+            <Link p='8px' fontSize='20px'>Contact the sales team <ChevronRightIcon /></Link>
+            <Link p='8px' fontSize='20px'>Contact the support team <ChevronRightIcon /></Link>
+            </Stack>
+          </Box>        
+          </Flex>
+         
+        </DrawerContent>
+      </Drawer>
+    </>
+  )
+}
 
 function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,7 +77,7 @@ function Navbar() {
           alignItems="center"
           justifyContent="space-around"
         >
-          <Link as={RouterLink} to='/home' _hover={{ textDecoration: 'none' }}><Logo /></Link>
+          <Link as={RouterLink} to='/home' _hover={{ textDecoration: 'none' }}><Logo color='white' /></Link>
 
           <Flex alignItems="center" gap="25px" h='100%'>
             <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>
@@ -75,7 +126,8 @@ function Navbar() {
           </Flex>
 
           <Flex alignItems="center" gap="20px">
-            <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/contact'>Contact us</Link>
+            {/* <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/contact'>Contact us</Link> */}
+            <DrawerExample />
             <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }} as={RouterLink} to='/login'>Log in</Link>
             <Button colorScheme="teal" size="md">
               <Link _hover={{ textDecoration: 'none' }} as={RouterLink} to='/signup'>Try it free</Link>
