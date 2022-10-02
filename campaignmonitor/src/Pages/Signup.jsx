@@ -6,9 +6,49 @@ import {
   Text,
   FormControl,
   FormHelperText,
+  Link
 } from "@chakra-ui/react";
+import { Link as RouterLink, Navigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Context/AuthContextProvider";
 
 function Signup() {
+
+  const [data, setData] = useState({
+    email: '',
+    password: ''
+  });
+
+
+  const {authState, setAuthState} = useContext(AuthContext);
+
+  const handleChange = (e) => {
+      const {name, value} = e.target;
+      setData({...data, [name]: value});
+  }
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+      let req = await fetch('https://reqres.in/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      });
+
+      let res = await req.json();
+
+      console.log(res);
+
+      setAuthState({...authState, id: res.id, token: res.token, isAuth: true});
+  }
+
+if(authState.isAuth && authState.token) return <Navigate to="/home" />
+
+
+const {email, password} = data;
+console.log(authState);
   return (
     <Box
      background="url('https://www.campaignmonitor.com/wp-content/themes/cm-theme/assets/images/signup/signup-light.jpg')"
@@ -38,7 +78,7 @@ function Signup() {
               _hover={{ border: "1px", borderColor: "black.100" }}
               border="1px"
               borderColor="black.100"
-              type="email"
+              type="text"
               placeholder="Full Name"
             />
             <Input
@@ -46,7 +86,7 @@ function Signup() {
               _hover={{ border: "1px", borderColor: "black.100" }}
               border="1px"
               borderColor="black.100"
-              type="email"
+              type="text"
               placeholder="Company Name"
             />
             <Input
@@ -56,14 +96,20 @@ function Signup() {
               borderColor="black.100"
               type="email"
               placeholder="Email Address"
+              onChange={handleChange}
+              name='email'
+              value={email}
             />
             <Input
               h="50px"
               _hover={{ border: "1px", borderColor: "black.100" }}
               border="1px"
               borderColor="black.100"
-              type="email"
+              type="password"
               placeholder="Password"
+              name='password'
+              onChange={handleChange}
+              value={password}
             />
             <Input
               bg="#7856FF"
@@ -72,6 +118,7 @@ function Signup() {
               h="60px"
               cursor="pointer"
               value="Create my account"
+              onClick={handleSubmit}
               _hover={{bg:'#704dff'}}
             />
             <FormHelperText fontSize="11px" color="gray">
@@ -83,7 +130,7 @@ function Signup() {
             </FormHelperText>
           </VStack>
         </FormControl>
-        <Text color="gray.600" fontSize="12px">Already have an account? Log in.</Text>
+        <Text color="gray.600" fontSize="12px">Already have an account? <Link _hover={{ textDecoration: 'none', color:"#7453F8" }} as={RouterLink} to='/signup'>Log In.</Link></Text>
         <Text color="gray.600" w='350px' fontSize="12px">
           By signing up, you agree to our Terms of Use and Anti-spam Policy.
         </Text>

@@ -86,6 +86,35 @@ function Pricing() {
     setValue(e.target.value);
   };
 
+  const getText1 = () => {
+    if (value < 500) return 9;
+    else if (value > 500 && value < 2000) return 29;
+    else if (value > 2000 && value < 5000) return 49;
+    else if (value > 5000 && value < 7000) return 89;
+    else if (value > 7000 && value < 10000) return 129;
+    else if (value > 10000 && value < 30000) return 199;
+    else if (value > 3000) return 299;
+  };
+
+  const getText2 = () => {
+    if (value < 500) return 29;
+    else if (value > 500 && value < 2000) return 59;
+    else if (value > 2000 && value < 5000) return 99;
+    else if (value > 5000 && value < 7000) return 149;
+    else if (value > 7000 && value < 10000) return 249;
+    else if (value > 10000 && value < 30000) return 399;
+    else if (value > 3000) return 699;
+  };
+
+  const getText3 = () => {
+    if (value < 500) return 149;
+    else if (value > 500 && value < 2000) return 149;
+    else if (value > 2000 && value < 5000) return 149;
+    else if (value > 5000 && value < 7000) return 249;
+    else if (value > 7000 && value < 10000) return 399;
+    else if (value > 10000 && value < 30000) return 499;
+    else if (value > 3000) return 989;
+  };
   return (
     <>
       <Navbar />
@@ -181,7 +210,7 @@ function Pricing() {
               $
             </Text>
             <Text fontWeight="bolder" as="span" fontSize="6xl">
-              299
+              {getText1()}
             </Text>
             /month
           </Text>
@@ -206,7 +235,7 @@ function Pricing() {
               $
             </Text>
             <Text fontWeight="bolder" as="span" fontSize="6xl">
-              299
+              {getText2()}
             </Text>
             /month
           </Text>
@@ -231,7 +260,7 @@ function Pricing() {
               $
             </Text>
             <Text fontWeight="bolder" as="span" fontSize="6xl">
-              299
+              {getText3()}
             </Text>
             /month
           </Text>
@@ -613,11 +642,18 @@ function Pricing() {
         Frequently Asked Questions
       </Text>
 
-      <Grid w="80%" m="auto" mb='100px' templateColumns="repeat(3, 1fr)" rowGap='40px' columnGap='30px'>
+      <Grid
+        w="80%"
+        m="auto"
+        mb="100px"
+        templateColumns="repeat(3, 1fr)"
+        rowGap="40px"
+        columnGap="30px"
+      >
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -625,9 +661,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -635,9 +671,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -645,9 +681,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -655,9 +691,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -665,9 +701,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -675,9 +711,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -685,9 +721,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
@@ -695,9 +731,9 @@ function Pricing() {
           </Stack>
         </GridItem>
         <GridItem w="100%" h="auto">
-          <Stack textAlign='left'>
+          <Stack textAlign="left">
             <Text>What if I go over my plan’s limits?</Text>
-            <Text fontSize='13px'>
+            <Text fontSize="13px">
               If you send above your limits or your subscriber list grows, we’ll
               notify you and you'll have an option to upgrade or pay for the
               additional emails.
