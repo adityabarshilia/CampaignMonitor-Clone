@@ -44,7 +44,7 @@ function DrawerExample() {
         <DrawerOverlay />
         <DrawerContent bg='black' color='white' opacity='.8' >
           <DrawerCloseButton />
-          <DrawerHeader m='12px 0 0 50px' ><Logo /></DrawerHeader>
+          <DrawerHeader m='12px 0 0 50px' ><Logo color='white' /></DrawerHeader>
 
           <Flex w='100%' h='100vh' justifyContent='center' mt='200px'>
           <Box>
@@ -77,7 +77,7 @@ function Navbar() {
           alignItems="center"
           justifyContent="space-around"
         >
-          <Link as={RouterLink} to='/home' _hover={{ textDecoration: 'none' }}><Logo /></Link>
+          <Link as={RouterLink} to='/home' _hover={{ textDecoration: 'none' }}><Logo color='white' /></Link>
 
           <Flex alignItems="center" gap="25px" h='100%'>
             <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>
