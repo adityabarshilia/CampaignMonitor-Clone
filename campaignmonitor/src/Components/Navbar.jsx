@@ -20,7 +20,7 @@ import {
   Divider,
   Stack
 } from "@chakra-ui/react";
-import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, ChevronUpIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import Logo from "./Logo";
 import { Link as RouterLink } from "react-router-dom";
 import { useRef } from "react";
@@ -42,18 +42,18 @@ function DrawerExample() {
         size='full'
       >
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent bg='black' color='white' opacity='.8' >
           <DrawerCloseButton />
-          <DrawerHeader><Logo /></DrawerHeader>
+          <DrawerHeader m='12px 0 0 50px' ><Logo /></DrawerHeader>
 
-          <Flex w='100%' h='100vh' justifyContent='center' alignItems='center'>
+          <Flex w='100%' h='100vh' justifyContent='center' mt='200px'>
           <Box>
-            <Text>ASK US YOUR QUESTIONS</Text>
+            <Text fontSize='12px' textAlign='center' p='8px'>ASK US YOUR QUESTIONS</Text>
             <Divider />
-            <Stack textAlign='left'>
-            <Link>Get started for free</Link>
-            <Link>Contact the sales team</Link>
-            <Link>Contact the support team</Link>
+            <Stack textAlign='left' spacing='10px' mt='10px'>
+            <Link p='8px' fontSize='20px'>Get started for free <ChevronRightIcon /></Link>
+            <Link p='8px' fontSize='20px'>Contact the sales team <ChevronRightIcon /></Link>
+            <Link p='8px' fontSize='20px'>Contact the support team <ChevronRightIcon /></Link>
             </Stack>
           </Box>        
           </Flex>
