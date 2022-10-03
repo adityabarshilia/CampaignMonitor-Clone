@@ -64,7 +64,7 @@ import Navbar from "../Components/Navbar";
             <Text fontSize="2xl" marginBottom="20px">
               Powering email marketing for businesses around the world.
             </Text>
-            <Flex gap="140px">
+            <Flex gap={[10,15,30,50, 100, 140]} justifyContent='center' alignItems='center'>
               <Image
                 w="88px"
                 h="88px"

@@ -79,7 +79,7 @@ function Navbar() {
         >
           <Link as={RouterLink} to='/home' _hover={{ textDecoration: 'none' }}><Logo color='white' /></Link>
 
-          <Flex alignItems="center" gap="25px" h='100%'>
+          <Flex alignItems="center" gap={{ base: '5px', md: '1px', lg: '25px' }} h='100%'>
             <Link _hover={{ textDecoration: 'none', color:"#6AD6E0" }}>
               <Menu isOpen={isOpen}>
                 <MenuButton
